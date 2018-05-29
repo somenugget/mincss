@@ -1,6 +1,7 @@
-const runPages = require('./runPages');
-const fetchStylesFromPage = require('./fetchStylesFromPage');
+const getCSSForPage = require('./getCSSForPage');
 
-(async () => {
-  const styles = await Promise.all(runPages(['https://codeguida.com/'], fetchStylesFromPage));
-})();
+const pages = ['https://prettier.io/', 'https://codeguida.com/'];
+
+pages.forEach(async (url) => {
+  console.warn(await getCSSForPage(url));
+});

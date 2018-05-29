@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "clean-css": "^4.1.11",
     "puppeteer": "^1.4.0"
   },
   "devDependencies": {
