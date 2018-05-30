@@ -6,19 +6,15 @@ const router = new Router();
 
 const validateParams = (ctx, next) => {
   const { urls } = ctx.request.body;
+  const errors = {};
 
   if (!Array.isArray(urls)) {
-    ctx.body = {
-      errors: {
-        base: 'Request must be an object with structure "{ "urls": ["http://url1.com", "https://url2.com"] }"'
-      }
-    };
+    errors.base = 'Request must be an object with structure "{ "urls": ["http://url1.com", "https://url2.com"] }"';
+    ctx.body = { errors };
     return;
   }
 
-  const errors = {
-    urls: urls.map(url => (!validateUrl(url) ? 'Invalid url' : null))
-  };
+  errors.urls = urls.map(url => (!validateUrl(url) ? 'Invalid url' : null));
 
   if (errors.urls.some(error => error)) {
     ctx.body = { errors };
