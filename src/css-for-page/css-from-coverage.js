@@ -7,7 +7,7 @@ const CleanCSS = require('clean-css');
  * @param {String} text with CSS
  * @return {String}
  */
-function CSSFromSingleUrlCoverage({ url, ranges, text }) {
+function cssFromSingleUrlCoverage({ url, ranges, text }) {
   if (url.toLowerCase().includes('.css')) {
     return ranges.reduce((css, { start, end }) => css + text.substring(start, end), '');
   }
@@ -20,10 +20,10 @@ function CSSFromSingleUrlCoverage({ url, ranges, text }) {
  * @param {Array} pageCoverage https://github.com/GoogleChrome/puppeteer/blob/v1.4.0/docs/api.md#coveragestopcsscoverage
  * @return {String}
  */
-function getCSSFromCoverage(pageCoverage) {
-  const allCSSOnPage = pageCoverage.map(CSSFromSingleUrlCoverage).join('');
+function cssFromCoverage(pageCoverage) {
+  const allCSSOnPage = pageCoverage.map(cssFromSingleUrlCoverage).join('');
 
   return new CleanCSS().minify(allCSSOnPage).styles;
 }
 
-module.exports = getCSSFromCoverage;
+module.exports = cssFromCoverage;

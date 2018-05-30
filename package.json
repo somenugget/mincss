@@ -10,6 +10,9 @@
   "license": "ISC",
   "dependencies": {
     "clean-css": "^4.1.11",
+    "koa": "^2.5.1",
+    "koa-bodyparser": "^4.2.1",
+    "koa-router": "^7.4.0",
     "puppeteer": "^1.4.0"
   },
   "devDependencies": {

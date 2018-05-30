@@ -5,7 +5,7 @@ const puppeteer = require('puppeteer');
  * @param {String} url to get coverage
  * @return {Promise<void>}
  */
-async function getPageCoverage(url) {
+async function pageCoverage(url) {
   const browser = await puppeteer.launch({ args: ['--no-sandbox', '--disable-dev-shm-usage'] });
 
   const page = await browser.newPage();
@@ -21,4 +21,4 @@ async function getPageCoverage(url) {
   return coverage;
 }
 
-module.exports = getPageCoverage;
+module.exports = pageCoverage;
