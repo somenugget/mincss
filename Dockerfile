@@ -11,10 +11,3 @@ RUN apt-get update && apt-get install -y \
   && apt-get update && apt-get install -y \
   google-chrome-stable \
   --no-install-recommends
-
-# Add Chrome as a user
-RUN groupadd -r chrome && useradd -r -g chrome -G audio,video chrome \
-    && mkdir -p /home/chrome && chown -R chrome:chrome /home/chrome
-
-# Run Chrome non-privileged
-USER chrome

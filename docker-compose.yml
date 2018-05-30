@@ -4,6 +4,8 @@ services:
   app:
     build:
       context: .
+    ports:
+      - "3000:3000"
     volumes:
       - .:/var/www/app
     working_dir: /var/www/app
